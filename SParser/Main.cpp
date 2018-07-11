@@ -9,6 +9,9 @@
 
 #pragma comment(lib, "Wsock32.lib")
 
+#define CONNECTION_IP_ADDR "127.0.0.1"
+#define CONNECTION_PORT 443
+
 #define LENGTH_BUFF 512
 
 SOCKET s;
@@ -115,8 +118,8 @@ int main()
 	sockaddr_in addr;
 	ZeroMemory(&addr, sizeof(addr));
 	addr.sin_family = AF_INET;
-	addr.sin_addr.S_un.S_addr = inet_addr("127.0.0.1"); 
-	addr.sin_port = htons(443);
+	addr.sin_addr.S_un.S_addr = inet_addr(CONNECTION_IP_ADDR); 
+	addr.sin_port = htons(CONNECTION_PORT);
 
 	if (SOCKET_ERROR == (connect(s, (sockaddr *)&addr, sizeof(addr))))
 	{
